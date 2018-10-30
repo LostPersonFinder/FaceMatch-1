@@ -1,0 +1,11 @@
+- robust high-resolution face/landmark detection with better detail representation (e.g. piece-wise lines)
+- handle secondary face features: glasses, facial hair, makeup, jewelry
+- incremental training for face detection and matching
+- investigate visual words approach to matching
+- image+text features fusion for better/quicker matching
+- roll/pitch/yaw head pose estimation and posting as r[RPY] face/profile region attribute
+- NearDup/ImageMatcher improvement: MPEG7, out of 5 image filters, consider 2 most effective and fast
+- beyond faces: matching techniques for med, pets, pills, etc.
+- artificial neural net (ANN) based face detection
+- same/same/different approach to inter-face distance
+- guided (snap-on) feature extraction, e.g. from the detected/annotated eye, nose, mouth regions

@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 14.00
+# Visual Studio 2015
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageMatcher", "ImageMatcher\ImageMatcher.vcxproj", "{0974DC4C-4E75-41BF-9D24-044A9AF89B85}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C237888B-B36D-411B-9C9E-6FB09F6E58B9} = {C237888B-B36D-411B-9C9E-6FB09F6E58B9}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "common\common.vcxproj", "{C237888B-B36D-411B-9C9E-6FB09F6E58B9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FaceFinder", "FaceFinder\FaceFinder.vcxproj", "{DD90F3F8-D066-4AA0-B075-B6FDB480545A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C237888B-B36D-411B-9C9E-6FB09F6E58B9} = {C237888B-B36D-411B-9C9E-6FB09F6E58B9}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FaceMatcher", "FaceMatcher\FaceMatcher.vcxproj", "{B9D3773A-2E24-4258-97B2-5579E36C6847}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NearDupImgDetector", "NearDupImgDetector\NearDupImgDetector.vcxproj", "{3B929BB2-5A8B-4C44-B974-9C6362933319}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Profile|x64 = Profile|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0974DC4C-4E75-41BF-9D24-044A9AF89B85}.Debug|x64.ActiveCfg = Debug|x64
+		{0974DC4C-4E75-41BF-9D24-044A9AF89B85}.Debug|x64.Build.0 = Debug|x64
+		{0974DC4C-4E75-41BF-9D24-044A9AF89B85}.Profile|x64.ActiveCfg = Profile|x64
+		{0974DC4C-4E75-41BF-9D24-044A9AF89B85}.Profile|x64.Build.0 = Profile|x64
+		{0974DC4C-4E75-41BF-9D24-044A9AF89B85}.Release|x64.ActiveCfg = Release|x64
+		{0974DC4C-4E75-41BF-9D24-044A9AF89B85}.Release|x64.Build.0 = Release|x64
+		{C237888B-B36D-411B-9C9E-6FB09F6E58B9}.Debug|x64.ActiveCfg = Debug|x64
+		{C237888B-B36D-411B-9C9E-6FB09F6E58B9}.Debug|x64.Build.0 = Debug|x64
+		{C237888B-B36D-411B-9C9E-6FB09F6E58B9}.Profile|x64.ActiveCfg = Profile|x64
+		{C237888B-B36D-411B-9C9E-6FB09F6E58B9}.Profile|x64.Build.0 = Profile|x64
+		{C237888B-B36D-411B-9C9E-6FB09F6E58B9}.Release|x64.ActiveCfg = Release|x64
+		{C237888B-B36D-411B-9C9E-6FB09F6E58B9}.Release|x64.Build.0 = Release|x64
+		{DD90F3F8-D066-4AA0-B075-B6FDB480545A}.Debug|x64.ActiveCfg = Debug|x64
+		{DD90F3F8-D066-4AA0-B075-B6FDB480545A}.Debug|x64.Build.0 = Debug|x64
+		{DD90F3F8-D066-4AA0-B075-B6FDB480545A}.Profile|x64.ActiveCfg = Profile|x64
+		{DD90F3F8-D066-4AA0-B075-B6FDB480545A}.Profile|x64.Build.0 = Profile|x64
+		{DD90F3F8-D066-4AA0-B075-B6FDB480545A}.Release|x64.ActiveCfg = Release|x64
+		{DD90F3F8-D066-4AA0-B075-B6FDB480545A}.Release|x64.Build.0 = Release|x64
+		{B9D3773A-2E24-4258-97B2-5579E36C6847}.Debug|x64.ActiveCfg = Debug|x64
+		{B9D3773A-2E24-4258-97B2-5579E36C6847}.Debug|x64.Build.0 = Debug|x64
+		{B9D3773A-2E24-4258-97B2-5579E36C6847}.Profile|x64.ActiveCfg = Profile|x64
+		{B9D3773A-2E24-4258-97B2-5579E36C6847}.Profile|x64.Build.0 = Profile|x64
+		{B9D3773A-2E24-4258-97B2-5579E36C6847}.Release|x64.ActiveCfg = Release|x64
+		{B9D3773A-2E24-4258-97B2-5579E36C6847}.Release|x64.Build.0 = Release|x64
+		{3B929BB2-5A8B-4C44-B974-9C6362933319}.Debug|x64.ActiveCfg = Debug|x64
+		{3B929BB2-5A8B-4C44-B974-9C6362933319}.Debug|x64.Build.0 = Debug|x64
+		{3B929BB2-5A8B-4C44-B974-9C6362933319}.Profile|x64.ActiveCfg = Profile|x64
+		{3B929BB2-5A8B-4C44-B974-9C6362933319}.Profile|x64.Build.0 = Profile|x64
+		{3B929BB2-5A8B-4C44-B974-9C6362933319}.Release|x64.ActiveCfg = Release|x64
+		{3B929BB2-5A8B-4C44-B974-9C6362933319}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

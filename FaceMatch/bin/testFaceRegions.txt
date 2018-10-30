@@ -1,0 +1,5 @@
+HAAR	testFaceRegions.HAAR.ndx	0.1
+LBPH	testFaceRegions.LBPH.ndx	0.3
+ORB	testFaceRegions.ORB.ndx	0.6
+SURF	testFaceRegions.SURF.ndx	0.9
+SIFT	testFaceRegions.SIFT.ndx	1

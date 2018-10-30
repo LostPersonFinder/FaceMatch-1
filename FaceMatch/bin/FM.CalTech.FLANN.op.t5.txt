@@ -1,0 +1,5 @@
+HAAR	FM.CalTech.op.t5.HAAR.ndx	0.0263086
+LBPH	FM.CalTech.op.t5.LBPH.ndx	0.520563
+ORB	FM.CalTech.op.t5.ORB.ndx	0.502912
+SURF	FM.CalTech.op.t5.SURF.ndx	0.906595
+SIFT	FM.CalTech.op.t5.SIFT.ndx	0.920958

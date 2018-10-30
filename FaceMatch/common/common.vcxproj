@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C237888B-B36D-411B-9C9E-6FB09F6E58B9}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>common</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(CUDA_PATH)\include;$(OpenCVHome)\include;$(OpenCVHome)\include\opencv;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(CUDA_PATH)\include;$(OpenCVHome)\include;$(OpenCVHome)\include\opencv;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <IncludePath>$(CUDA_PATH)\include;$(OpenCVHome)\include;$(OpenCVHome)\include\opencv;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>$(CUDA);WIN32;_DEBUG;_USRDLL;_SCL_SECURE_NO_WARNINGS;COMMON_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>common.h</PrecompiledHeaderFile>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(OpenCVHome)\lib\opencv_*d.lib;$(CUDA_PATH)\lib\x64\*.lib;$(IntDir)cuda_*.obj</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\bin</Command>
+      <Message>copy binaries</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>$(CUDA);WIN32;NDEBUG;_USRDLL;COMMON_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDataBaseFileName>
+      </ProgramDataBaseFileName>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>common.h</PrecompiledHeaderFile>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>true</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(OpenCVHome)\lib\opencv_*.lib;$(CUDA_PATH)\lib\x64\*.lib;$(IntDir)cuda_*.obj</AdditionalDependencies>
+      <HeapReserveSize>
+      </HeapReserveSize>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\bin</Command>
+      <Message>copy binaries</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>$(CUDA);WIN32;NDEBUG;_TIMING;_WINDOWS;_USRDLL;COMMON_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>common.h</PrecompiledHeaderFile>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>true</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(OpenCVHome)\lib\opencv_*.lib;$(CUDA_PATH)\lib\x64\*.lib;$(IntDir)cuda_*.obj</AdditionalDependencies>
+      <HeapReserveSize>
+      </HeapReserveSize>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(TargetPath) ..\bin</Command>
+      <Message>copy binaries</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ColorFaceLandmarks.cpp" />
+    <ClCompile Include="ColorHistogram.cpp" />
+    <ClCompile Include="ColorMapManager.cpp" />
+    <ClCompile Include="ColorMapper.cpp" />
+    <ClCompile Include="common.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ConjugateGradient.cpp" />
+    <ClCompile Include="cv_supp.cpp" />
+    <ClCompile Include="denoiseTVL1.cpp" />
+    <ClCompile Include="Diagnostics.cpp" />
+    <ClCompile Include="FaceFinder.cpp" />
+    <ClCompile Include="FaceRegions.cpp" />
+    <ClCompile Include="GPU_supp.cpp" />
+    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="ImageCollage.cpp" />
+    <ClCompile Include="ImageDescriptorIndexBase.cpp" />
+    <ClCompile Include="ImageMatcher.cpp" />
+    <ClCompile Include="ImgDscBase.cpp" />
+    <ClCompile Include="ImgDscKeyPt.cpp" />
+    <ClCompile Include="ImgDscLBPH.cpp" />
+    <ClCompile Include="ImgDscMany.cpp" />
+    <ClCompile Include="ImgDscMatcher.cpp" />
+    <ClCompile Include="ImgDscRSILC.cpp" />
+    <ClCompile Include="ImgFtrHaarWavelet.cpp" />
+    <ClCompile Include="ImgFtrHaarWaveletFace.cpp" />
+    <ClCompile Include="ImgFtrHaarWaveletWhole.cpp" />
+    <ClCompile Include="ImgNearDupCollection.cpp" />
+    <ClCompile Include="LPSolver.cpp" />
+    <ClCompile Include="MLP.cpp" />
+    <ClCompile Include="NearDupImgDetector.cpp" />
+    <ClCompile Include="ObjectDetectorANN.cpp" />
+    <ClCompile Include="Query.cpp" />
+    <ClCompile Include="RegionDetector.cpp" />
+    <ClCompile Include="ResultsDisplay.cpp" />
+    <ClCompile Include="SigIndexMany.cpp" />
+    <ClCompile Include="Simplex.cpp" />
+    <ClCompile Include="SkinHist.cpp" />
+    <ClCompile Include="SkinMapDetectorANN.cpp" />
+    <ClCompile Include="sys_supp.cpp" />
+    <ClCompile Include="Timing.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AccuracyEvaluation.h" />
+    <ClInclude Include="ANNStructs.h" />
+    <ClInclude Include="ColorFaceLandmarks.h" />
+    <ClInclude Include="ColorHistogram.h" />
+    <ClInclude Include="ColorMapManager.h" />
+    <ClInclude Include="ColorMapper.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="cv_supp.h" />
+    <ClInclude Include="dcl.h" />
+    <ClInclude Include="Diagnostics.h" />
+    <ClInclude Include="Exception.h" />
+    <ClInclude Include="FaceFinder.h" />
+    <ClInclude Include="FaceRegions.h" />
+    <ClInclude Include="GPU_supp.h" />
+    <ClInclude Include="Image.h" />
+    <ClInclude Include="ImageCollage.h" />
+    <ClInclude Include="ImageDescriptorIndex.h" />
+    <ClInclude Include="ImageDescriptorIndexBase.h" />
+    <ClInclude Include="ImageMatcher.h" />
+    <ClInclude Include="ImageMatcherFaceRegions.h" />
+    <ClInclude Include="ImageMatcherWhole.h" />
+    <ClInclude Include="ImgDscBase.h" />
+    <ClInclude Include="ImgDscHaar.h" />
+    <ClInclude Include="ImgDscKeyPt.h" />
+    <ClInclude Include="ImgDscLBPH.h" />
+    <ClInclude Include="ImgDscMany.h" />
+    <ClInclude Include="ImgDscMatcher.h" />
+    <ClInclude Include="ImgDscRSILC.h" />
+    <ClInclude Include="ImgFtrHaarWavelet.h" />
+    <ClInclude Include="ImgFtrHaarWaveletFace.h" />
+    <ClInclude Include="ImgFtrHaarWaveletWhole.h" />
+    <ClInclude Include="ImgNearDupCollection.h" />
+    <ClInclude Include="ios_supp.h" />
+    <ClInclude Include="ListStreamer.h" />
+    <ClInclude Include="math_supp.h" />
+    <ClInclude Include="MLP.h" />
+    <ClInclude Include="NearDupImgDetector.h" />
+    <ClInclude Include="ObjectDetectorANN.h" />
+    <ClInclude Include="omp_supp.h" />
+    <ClInclude Include="optim.h" />
+    <ClInclude Include="Query.h" />
+    <ClInclude Include="RegionDetector.h" />
+    <ClInclude Include="ResultsDisplay.h" />
+    <ClInclude Include="SigIndexHaar.h" />
+    <ClInclude Include="SigIndexKeyPt.h" />
+    <ClInclude Include="SigIndexMany.h" />
+    <ClInclude Include="SkinHIST.h" />
+    <ClInclude Include="SkinMapDetectorANN.h" />
+    <ClInclude Include="string_supp.h" />
+    <ClInclude Include="Timing.h" />
+    <ClInclude Include="UnitTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="doxyfile" />
+    <None Include="mainpage.dox" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,4 @@
+- improve the near dup detector by including pi/2 phase rotations
+- report the final stats
+- reduce the original set with the improved tool
+- consider rotation-invariant wavelets, e.g. in http://www.cns.nyu.edu/~eero/steerpyr/

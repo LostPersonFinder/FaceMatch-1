@@ -1,0 +1,5 @@
+HAAR	FM.FaceMatchTeam.HAAR.ndx	.2
+LBPH	FM.FaceMatchTeam.LBPH.ndx	.25
+ORB	FM.FaceMatchTeam.ORB.ndx	.3
+SURF	FM.FaceMatchTeam.SURF.ndx	.9
+SIFT	FM.FaceMatchTeam.SIFT.ndx	1

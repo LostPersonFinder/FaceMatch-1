@@ -1,0 +1,1 @@
+FaceFinder -c -v -p ../Data/LFW.aligned/images/ -lst:in ../Lists/LFWA/tiny.faces.lst

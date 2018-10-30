@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="FaceMatch" />
+		<Option makefile_is_custom="1" />
+		<Option execution_dir="./" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/ImageMatcher" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="./bin" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="-test:SerializeIndividualDescriptors" />
+				<Option host_application="ImageMatcher" />
+				<Option run_host_application_in_terminal="0" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<MakeCommands>
+					<Build command="$make -j8 debug" />
+					<CompileFile command="$make -f $makefile $file" />
+					<Clean command="$make cleanDebug" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -j8" />
+					<SilentBuild command="$make -j8 debug &gt; $(CMD_NULL)" />
+				</MakeCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/ImageMatcher" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="./bin" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="-test:SerializeIndividualDescriptors" />
+				<Option host_application="bin/ImageMatcher" />
+				<Option run_host_application_in_terminal="0" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<MakeCommands>
+					<Build command="$make -j8 release" />
+					<CompileFile command="$make -f $makefile $file" />
+					<Clean command="$make cleanRelease" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -j8" />
+					<SilentBuild command="$make -j8 release &gt; $(CMD_NULL)" />
+				</MakeCommands>
+			</Target>
+			<Target title="Profile">
+				<Option output="bin/ImageMatcher" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="./bin" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="-fm:DIST -ndx:in BM.1K.txt -dm:OM -p ../Data/ -lst ../Lists/Benchmark/1.GT.lst -t 1024.5 &gt;BM.1K.DIST.OM.out 2&gt;BM.1K.DIST.OM.log" />
+				<Option host_application="/home/eugene/WorkArea/FaceMatchSystem/trunk/FaceMatch/bin/NearDupImgDetector" />
+				<Option run_host_application_in_terminal="0" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<MakeCommands>
+					<Build command="$make -j _TIMING=1 ImageMatcher" />
+					<CompileFile command="$make -j _TIMING=1 $file" />
+					<Clean command="$make clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q _TIMING=1 ImageMatcher" />
+					<SilentBuild command="$make -j _TIMING=1 ImageMatcher &gt; $(CMD_NULL)" />
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="FaceFinder/HistogramU2U.h" />
+		<Unit filename="FaceFinder/ImageMetaData.h" />
+		<Unit filename="FaceFinder/MapImgID2Regions.cpp" />
+		<Unit filename="FaceFinder/MapImgID2Regions.h" />
+		<Unit filename="FaceFinder/TestFaceFinder.cpp" />
+		<Unit filename="FaceFinder/TestFaceFinder.h" />
+		<Unit filename="FaceFinder/main.cpp" />
+		<Unit filename="FaceFinder/stdafx.cpp" />
+		<Unit filename="FaceFinder/stdafx.h" />
+		<Unit filename="ImageMatcher/ImageCollage.h" />
+		<Unit filename="ImageMatcher/TestImageMatch.cpp" />
+		<Unit filename="ImageMatcher/TestImageMatch.h" />
+		<Unit filename="ImageMatcher/main.cpp" />
+		<Unit filename="ImageMatcher/stdafx.cpp" />
+		<Unit filename="ImageMatcher/stdafx.h" />
+		<Unit filename="NearDupImgDetector/ImgNearDupCollection.cpp" />
+		<Unit filename="NearDupImgDetector/ImgNearDupCollection.h" />
+		<Unit filename="NearDupImgDetector/NearDupImgDetector.cpp" />
+		<Unit filename="NearDupImgDetector/NearDupImgDetector.h" />
+		<Unit filename="NearDupImgDetector/TestNearDumImgDetector.cpp" />
+		<Unit filename="NearDupImgDetector/TestNearDumImgDetector.h" />
+		<Unit filename="NearDupImgDetector/main.cpp" />
+		<Unit filename="NearDupImgDetector/stdafx.cpp" />
+		<Unit filename="NearDupImgDetector/stdafx.h" />
+		<Unit filename="common/ANNStructs.h" />
+		<Unit filename="common/AccuracyEvaluation.h" />
+		<Unit filename="common/AutoPtrf.h" />
+		<Unit filename="common/ColorFaceLandmarks.cpp" />
+		<Unit filename="common/ColorFaceLandmarks.h" />
+		<Unit filename="common/ColorHistogram.cpp" />
+		<Unit filename="common/ColorHistogram.h" />
+		<Unit filename="common/ColorMapManager.h" />
+		<Unit filename="common/ColorMapper.cpp" />
+		<Unit filename="common/ColorMapper.h" />
+		<Unit filename="common/ConjugateGradient.cpp" />
+		<Unit filename="common/Diagnostics.cpp" />
+		<Unit filename="common/Diagnostics.h" />
+		<Unit filename="common/Exception.h" />
+		<Unit filename="common/FaceFinder.cpp" />
+		<Unit filename="common/FaceFinder.h" />
+		<Unit filename="common/FaceRegions.cpp" />
+		<Unit filename="common/FaceRegions.h" />
+		<Unit filename="common/Image.cpp" />
+		<Unit filename="common/Image.h" />
+		<Unit filename="common/ImageCollage.cpp" />
+		<Unit filename="common/ImageCollage.h" />
+		<Unit filename="common/ImageDescriptorIndex.h" />
+		<Unit filename="common/ImageDescriptorIndexBase.cpp" />
+		<Unit filename="common/ImageDescriptorIndexBase.h" />
+		<Unit filename="common/ImageMatcher.h" />
+		<Unit filename="common/ImageMatcherFaceRegions.h" />
+		<Unit filename="common/ImageMatcherWhole.cpp" />
+		<Unit filename="common/ImageMatcherWhole.h" />
+		<Unit filename="common/ImgDscBase.h" />
+		<Unit filename="common/ImgDscHaar.h" />
+		<Unit filename="common/ImgDscKeyPt.cpp" />
+		<Unit filename="common/ImgDscKeyPt.h" />
+		<Unit filename="common/ImgDscLBPH.cpp" />
+		<Unit filename="common/ImgDscLBPH.h" />
+		<Unit filename="common/ImgDscMany.cpp" />
+		<Unit filename="common/ImgDscMany.h" />
+		<Unit filename="common/ImgDscMatcher.cpp" />
+		<Unit filename="common/ImgDscMatcher.h" />
+		<Unit filename="common/ImgDscRSILC.cpp" />
+		<Unit filename="common/ImgDscRSILC.h" />
+		<Unit filename="common/ImgFtrHaarWavelet.cpp" />
+		<Unit filename="common/ImgFtrHaarWavelet.h" />
+		<Unit filename="common/ImgFtrHaarWaveletFace.cpp" />
+		<Unit filename="common/ImgFtrHaarWaveletFace.h" />
+		<Unit filename="common/ImgFtrHaarWaveletWhole.cpp" />
+		<Unit filename="common/ImgFtrHaarWaveletWhole.h" />
+		<Unit filename="common/ImgNearDupCollection.cpp" />
+		<Unit filename="common/ImgNearDupCollection.h" />
+		<Unit filename="common/LPSolver.cpp" />
+		<Unit filename="common/ListStreamer.h" />
+		<Unit filename="common/MLP.cpp" />
+		<Unit filename="common/MLP.h" />
+		<Unit filename="common/NearDupImgDetector.cpp" />
+		<Unit filename="common/NearDupImgDetector.h" />
+		<Unit filename="common/ObjectDetectorANN.h" />
+		<Unit filename="common/Query.cpp" />
+		<Unit filename="common/Query.h" />
+		<Unit filename="common/RegionDetector.cpp" />
+		<Unit filename="common/RegionDetector.h" />
+		<Unit filename="common/ResultsDisplay.cpp" />
+		<Unit filename="common/ResultsDisplay.h" />
+		<Unit filename="common/SigIndexHaar.h" />
+		<Unit filename="common/SigIndexKeyPt.h" />
+		<Unit filename="common/SigIndexMany.cpp" />
+		<Unit filename="common/SigIndexMany.h" />
+		<Unit filename="common/Simplex.cpp" />
+		<Unit filename="common/SkinHIST.cpp" />
+		<Unit filename="common/SkinHIST.h" />
+		<Unit filename="common/SkinMapDetectorANN.cpp" />
+		<Unit filename="common/SkinMapDetectorANN.h" />
+		<Unit filename="common/Timing.cpp" />
+		<Unit filename="common/Timing.h" />
+		<Unit filename="common/UnitTest.h" />
+		<Unit filename="common/common.cpp" />
+		<Unit filename="common/common.h" />
+		<Unit filename="common/cuda_operations.cuh" />
+		<Unit filename="common/dcl.h" />
+		<Unit filename="common/denoiseTVL1.cpp" />
+		<Unit filename="common/img_supp.h" />
+		<Unit filename="common/ios_supp.h" />
+		<Unit filename="common/math_supp.h" />
+		<Unit filename="common/omp_supp.h" />
+		<Unit filename="common/optim.h" />
+		<Unit filename="common/string_supp.h" />
+		<Unit filename="common/sys_supp.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

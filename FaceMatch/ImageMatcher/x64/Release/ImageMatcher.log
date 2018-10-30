@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+cl : Command line warning D9030: '/Gm' is incompatible with multiprocessing; ignoring /MP switch
+  TestImageMatch.cpp
+  main.cpp
+  Generating Code...
+  ImageMatcher.vcxproj -> \\lhcdevfiler\FMProject\GitHubStaging\FaceMatch\x64\Release\ImageMatcher.exe
+  ImageMatcher.vcxproj -> \\lhcdevfiler\FMProject\GitHubStaging\FaceMatch\x64\Release\ImageMatcher.pdb (Full PDB)
+          1 file(s) copied.

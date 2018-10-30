@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {5306C26A-EB56-4935-AF97-97F0EFE73BC5} = s 'CoreImageMatcherWhole Class'
+		{
+			ForceRemove Programmable
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{8D053CE6-E679-44EF-A6F2-B05C6DB4BB87}'
+			Version = s '1.0'
+		}
+	}
+}

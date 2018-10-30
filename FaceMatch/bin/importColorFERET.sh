@@ -1,0 +1,1 @@
+FaceFinder -p ../Data/ColorFERET/images/all/ -lst:in all.lst.ColorFERET -fd:sub:LM -fc:min 1 -fc:max 1 -lst:out ../Lists/ColorFERET/FaceFinder/all.GT.FF.lst 2>../Lists/ColorFERET/FaceFinder/all.GT.FF.log

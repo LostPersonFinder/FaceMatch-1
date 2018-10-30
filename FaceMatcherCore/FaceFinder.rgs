@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {A68516F9-3A80-4D0A-9DE6-4E7D3C70FE53} = s 'FaceFinder Class'
+		{
+			ForceRemove Programmable
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{8D053CE6-E679-44EF-A6F2-B05C6DB4BB87}'
+			Version = s '1.0'
+		}
+	}
+}

@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {7E06FF04-0A05-4F39-984C-96586EAA660B} = s 'CoreMatcherFaceRegionsMany Class'
+		{
+			ForceRemove Programmable
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{8D053CE6-E679-44EF-A6F2-B05C6DB4BB87}'
+			Version = s '1.0'
+		}
+	}
+}

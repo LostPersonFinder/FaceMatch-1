@@ -1,0 +1,3 @@
+FaceFinder Viola-Jones detector models, pre-trained and supplied with OpenCV. We compressed and cached them here for convenience and better library stability. haar* models use Haar-like features, while lbp* models use local binary pattern (LBP) features, which may work faster than haar* models, but are less accurate, and included here for experimental purposes. CPU-based Viola-Jones detector can load and work with compressed (*.xml.gz) files, but GPU-based detector requires uncompressed (*.xml) files. See OpenCV documentation for more details.
+
+2011-2015 (C) FaceMatch@NIH.gov

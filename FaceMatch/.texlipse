@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Thu Jul 21 16:46:17 EDT 2016
+markTmpDer=true
+builderNum=2
+outputDir=Publications/2016.NIH.RD.FaceMatch.poster/
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=Publications/2016.NIH.RD.FaceMatch.poster
+mainTexFile=poster.tex
+outputFile=poster.pdf
+langSpell=en
+markDer=true
+srcDir=Publications/2016.NIH.RD.FaceMatch.poster/

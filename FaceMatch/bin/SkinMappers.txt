@@ -1,0 +1,4 @@
+#type	SkinModelFileName	optional weight
+Stat	SkinStat.HSV.yml	0
+Hist	Lab.all.xyz	0.5
+ANN	NET_PL_9_15_50_90.18.ann.yml	0.5

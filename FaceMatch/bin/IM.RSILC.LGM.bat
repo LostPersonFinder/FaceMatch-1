@@ -1,0 +1,1 @@
+ImageMatcher -fm:RSILC -m:i -ndx:out FM.LGM.RSILC.ndx -p \\lhcdevfiler\facematch-project\Data\LFW\Source\Images\ -lst ..\Lists\LFW\Source\faces-LGM.lst

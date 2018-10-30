@@ -1,0 +1,1 @@
+ImageMatcher -p ..\Data\Medical\Radiology\ -lst ..\Lists\Medical\Radiology.lst -ndx:in Radiology.ndx -v -t .75

@@ -1,0 +1,5 @@
+HAAR	ImageMatcherFaceRegions.HAAR.ndx	0.1
+LBPH	ImageMatcherFaceRegions.LBPH.ndx	0.3
+ORB	ImageMatcherFaceRegions.ORB.ndx	0.6
+SURF	ImageMatcherFaceRegions.SURF.ndx	0.9
+SIFT	ImageMatcherFaceRegions.SIFT.ndx	1

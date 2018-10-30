@@ -1,0 +1,47 @@
+﻿  common.cpp
+cl : Command line warning D9030: '/Gm' is incompatible with multiprocessing; ignoring /MP switch
+  Timing.cpp
+  sys_supp.cpp
+  SkinMapDetectorANN.cpp
+  SkinHist.cpp
+  Simplex.cpp
+  SigIndexMany.cpp
+  ResultsDisplay.cpp
+  RegionDetector.cpp
+  Query.cpp
+  ObjectDetectorANN.cpp
+  NearDupImgDetector.cpp
+  MLP.cpp
+  LPSolver.cpp
+  ImgNearDupCollection.cpp
+  ImgFtrHaarWaveletWhole.cpp
+  ImgFtrHaarWaveletFace.cpp
+  ImgFtrHaarWavelet.cpp
+  ImgDscRSILC.cpp
+  ImgDscMatcher.cpp
+  ImgDscMany.cpp
+  Generating Code...
+  Compiling...
+  ImgDscLBPH.cpp
+  ImgDscKeyPt.cpp
+  ImgDscBase.cpp
+  ImageMatcher.cpp
+  ImageDescriptorIndexBase.cpp
+  ImageCollage.cpp
+  Image.cpp
+  GPU_supp.cpp
+  FaceRegions.cpp
+  FaceFinder.cpp
+  Diagnostics.cpp
+  denoiseTVL1.cpp
+  cv_supp.cpp
+  ConjugateGradient.cpp
+  ColorMapper.cpp
+  ColorMapManager.cpp
+  ColorHistogram.cpp
+  ColorFaceLandmarks.cpp
+  Generating Code...
+     Creating library \\lhcdevfiler\FMProject\GitHubStaging\FaceMatch\x64\Release\common.lib and object \\lhcdevfiler\FMProject\GitHubStaging\FaceMatch\x64\Release\common.exp
+  common.vcxproj -> \\lhcdevfiler\FMProject\GitHubStaging\FaceMatch\x64\Release\common.dll
+  common.vcxproj -> \\lhcdevfiler\FMProject\GitHubStaging\FaceMatch\x64\Release\common.pdb (Full PDB)
+          1 file(s) copied.

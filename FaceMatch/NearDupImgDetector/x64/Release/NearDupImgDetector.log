@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+cl : Command line warning D9030: '/Gm' is incompatible with multiprocessing; ignoring /MP switch
+  TestNearDupImgDetector.cpp
+  main.cpp
+  Generating Code...
+  NearDupImgDetector.vcxproj -> \\lhcdevfiler\FMProject\GitHubStaging\FaceMatch\x64\Release\NearDupImgDetector.exe
+  NearDupImgDetector.vcxproj -> \\lhcdevfiler\FMProject\GitHubStaging\FaceMatch\x64\Release\NearDupImgDetector.pdb (Full PDB)
+          1 file(s) copied.

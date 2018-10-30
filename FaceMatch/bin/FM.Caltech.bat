@@ -1,0 +1,1 @@
+ImageMatcher -fm -p ..\Data\CalTech\full\ -ndx:in CalTech.full.txt -lst ..\Lists\CalTech\tiny.GT.lst -skin -v -t 5 %*

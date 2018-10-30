@@ -1,0 +1,5 @@
+HAAR	testFaceRegions.txt.ndx.HAAR.ndx	0.1
+LBPH	testFaceRegions.txt.ndx.LBPH.ndx	0.3
+ORB	testFaceRegions.txt.ndx.ORB.ndx	0.6
+SURF	testFaceRegions.txt.ndx.SURF.ndx	0.9
+SIFT	testFaceRegions.txt.ndx.SIFT.ndx	1

@@ -1,0 +1,181 @@
+/*! @mainpage FaceMatch library
+
+The <a href="https://docs.google.com/document/d/1BqoHeZA9p76eWEC9h_vV7_wyYtqy2z93kW02XTx2ibY/edit?usp=sharing">FaceMatch project</a>
+has been initiated by the <a href="http://www.nlm.nih.gov/">U.S. National Library of Medicine</a> (NLM) to enable a visual search capability
+in the <a href="https://pl.nlm.nih.gov/">PeopleLocator</a> (PL) family re-unification system.
+The resulting FaceMatch library is intended to be used in content based image retrieval (CBIR) applications primarily targeting human faces.
+Its primary goal is to provide robust face detection (via FaceMatch::FaceFinder class)
+and visual matching/retrieval capabilities (via FaceMatch::ImageMatcher descendants) for images with (or without) faces.
+This cross-platform library is implemented in C++ using <a href="http://opencv.org">OpenCV</a> (for image processing and visual computing functions)
+and <a href="http://openmp.org">OpenMP</a> (for transparent multi-threading on multi-core CPUs).
+FM library also takes advantage of <a href="http://www.nvidia.com/object/cuda_home_new.html">CUDA</a>-capable GPUs, when they are available.
+
+\image HTML FM-lib-diagram.png "FaceMatch library major parts and their dependencies shown as arrows. Dotted arrow lines indicate optional dependencies."
+
+The above diagram presents the FaceMatch library major parts (shown as rectangular regions) along with their dependencies (shown as arrows).
+The blue rectangles show the modules with the available source code, while the gray blocks show the proprietary software and hardware components FM library depends on.
+The optional dependencies are shown via the dotted arrows. The Utilities box denotes all classes and functions utilized internally by the FaceMatch library.
+This documentation presents a programmer's guide/reference into the FaceMatch library. Higher-level methodology design documents can be found
+on <a href="https://wiki.nlm.nih.gov/confluence/display/PL/FaceMatch">FaceMatch wiki</a> page.
+FaceMatch related technical <a href="http://lhncbc.nlm.nih.gov/publications/author/FaceMatch/Borovikov?f[0]=sm_group_audience:Communications%20Engineering%20Branch&limit=25">papers,
+presentations and posters</a> are open for public, and their sources can be found under the Publications folder in the FM project tree.
+
+# face detection
+
+<img src="FaceRegionDetector.png" align="right">
+
+FaceMatch::FaceRegionDetector is an important utility structure that encapsulates OpenCV's
+face gray-scale detection functionality and complements it
+with the skin mapping functionality for the purpose of more accurate face localization.
+A (static, shared, and thread-safe) reference to an instance of this class
+is typically passed to each instantiation of the FaceMatch::FaceFinder constructor,
+hence the FM library user would typically instantiate it as a singleton, e.g. FaceMatch::SFaceRegionDetector
+optionally passing several important parameters to FaceMatch::SFaceRegionDetector::init(),
+i.e. OpenCV face and profile detection models (stored in the XML files), skin color mapper kind and its model file name, etc.
+Access to the static single instance is provided via FaceMatch::SFaceRegionDetector::get().
+The class depends on OpenCV and several other utility classes defined in the FaceMatch library.
+The multi-threading and synchronization is ensured by smart locking utilizing the capabilities of OpenMP.
+
+<img src="FaceFinder.png" align="right">
+
+FaceMatch::FaceFinder defines a class of skin-aware face detectors, utilizing OpenCV
+color-blind object detectors trained on frontal and profile face views.
+An instance of this class is created for each input image with some processing options
+passed to a \link FaceMatch::FaceFinder::FaceFinder constructor\endlink.
+The results of face detection can be printed to a standard text stream by instance
+serialization or/and accessed via FaceMatch::FaceFinder::getFaces() method,
+which returns a reference to the detected face regions (if any) in the order of their proximity to the center of the image.
+The face regions can be either faces (in near frontal view) or profiles (in somewhat turned away view).
+Each instance of FaceMatch::FaceFinder depends on a (typically shared) instance of FaceMatch::FaceRegionDetector
+for basic (gray-scale) face detection calls and on other face-related utilities.
+FaceFinder also depends on OpenCV (for image processing) and on OpenMP (for multi-threaded execution),
+opportunistically utilizing GPU via CUDA-aware OpenCV calls for faster image processing.
+FaceFinder is exposed by FM library for external usage, e.g. by FaceMatch web services.
+
+@see FaceMatch::FaceRegions
+
+# face/image matching
+
+<img src="ImageMatcherFaceRegions.png" align="right">
+
+FaceMatch::ImageMatcherFaceRegions in the current FM library implementation is a synonym
+for FaceMatch::ImageMatcherFaceRegionsBase <FaceMatch::SigIndexManyDist>, extending the base
+functionality (\link FaceMatch::ImageMatcherFaceRegionsBase::ingest() ingest\endlink, \link FaceMatch::ImageMatcherFaceRegionsBase::query query\endlink,
+\link FaceMatch::ImageMatcherFaceRegionsBase::remove remove\endlink, \link FaceMatch::ImageMatcherFaceRegionsBase::list list\endlink)
+for distance-based descriptor combination in query results re-ranking. An application of FM library would typically need a single
+(static, shared, and thread-safe) instance of this class created by calling its \link FaceMatch::ImageMatcherFaceRegionsBase::ImageMatcherFaceRegionsBase()
+constructor\endlink. The class clearly depends on FaceMatch::FaceFinder for automatic face detection (when no face regions supplied with the query).
+It also depends on OpenCV (for image processing) and on OpenMP (for multi-threaded execution).
+
+<img src="ImageMatcherWhole.png" align="right">
+
+FaceMatch::ImageMatcherWhole provides basically the same functionality as FaceMatch::ImageMatcherFaceRegions
+but for the whole images without face regions specified, hence no dependence on FaceFinder.
+The ImageMatcher command-line interface (CLI) provides a good example of how both image matching classes can be created and invoked.
+
+# building and running
+
+Refer to the FM library project README for system specific instructions on building FM library and its CLI tools.
+All executable binaries are collected under the 'bin' directory of the project tree.
+To test face image matching functionality the user is encouraged to run several tests form the command prompt at the bin directory, e.g.
+\code
+$ FaceFinder -test
+$ ImageMatcher -test
+\endcode
+To index a small demo set of faces, run
+\code
+$ ImageMatcher -fm -m:i -p ../Data/ -lst ../Lists/Demo/GT.tiny.lst -ndx:out demo.tiny.txt
+\endcode
+To query that small demo set of faces, run
+\code
+$ ImageMatcher -fm -p ../Data/ -lst ../Lists/Demo/GT.tiny.lst -ndx:in demo.tiny.txt
+\endcode
+All command line utilities provide help, when executed with the -h or -? option, e.g.
+\code
+$ FaceFinder -h
+$ ImageMatcher -h
+\endcode
+The user can also supply -GPU flag, if GPU-accelerated operation is preferred.
+For more visually interactive mode, one could use -v switch, e.g. when annotating faces or issuing multi-face visual queries.
+Refer to <a href="https://wiki.nlm.nih.gov/confluence/download/attachments/74619736/FaceFinder.AnnotationGuide.docx?version=1&modificationDate=1438213732486&api=v2">
+Documents/FaceFinder.AnnotationGuide.docx</a> for explanation on visual face annotation using FaceFinder.
+Refer to <a href="https://wiki.nlm.nih.gov/confluence/download/attachments/74619736/ImageMatcher.functionality.docx?version=1&modificationDate=1438213673242&api=v2">
+Documents/ImageMatcher.functionality.docx</a> for more visual search use-cases and examples.
+
+# code example
+
+The following code sample shows a typical test case for FaceMatch library, demonstrating FaceRegionDetector singleton initialization,
+face detection and matching, as well as the visual index manipulation.
+\code
+/// show/test typical patterns for face detection/matching
+void test()
+{
+	SFaceRegionDetector::init(); // single face region detector
+	const string
+		base = "../Images/", // base path makes sense for multiple files from the same folder
+		list = ("12326_gladyscartyjpeg-1191520_md.jpg\tf[88,49;62,62]\n" // input images with face regions
+				"3099739__86846_thumb.jpg\tf[193,157;64,64]\tf[225,109;80,80]\tf[121,144;83,83]");
+
+if (getVerbLevel()) clog<<"=== Face Detection:"<<endl;
+	for (stringstream strmInput(list); !strmInput.eof(); )
+	{
+		string line; getline(strmInput, line); if (line.empty()) continue; // process line-by-line
+		FaceFinder ff(SFaceRegionDetector::get(), base, line, // construct a FaceFinder instance per image
+			FaceFinder::discard|FaceFinder::detection|FaceFinder::HistEQ); // re-detect face regions
+		stringstream strmFF; strmFF<<ff; // stream the resulting regions
+		string resFF=strmFF.str();
+		if (getVerbLevel()) clog<<"in: "<<line<<endl<<"out: "<<resFF<<endl;
+		CHECK(resFF==line, "input and output face regions should be the same");
+		CHECK(ff.gotFaces(), "some faces should be detected");
+		auto pfr = ff.getPrimaryFaceRegion(); // primary (most central) face
+		CHECK(pfr, "primary face region should not be null");
+		CHECK(pfr->area(), "primary face region area should not be empty");
+		for (auto c: ff.getFaces()) // iterate through the face regions
+		{
+			CHECK(c->Kind=="f" || c->Kind=="p", "face/profile region kind should be 'f' or 'p' respectively");
+			const auto & fr = dynamic_cast<const FaceRegion&>(*c);
+			CHECK(fr.diameter()>=cRegDimMin, "primary face regions should be large enough");
+		}
+	}
+
+if (getVerbLevel()) clog<<"=== Face Matching:"<<endl;
+	ImageMatcherFaceRegions im("", SFaceRegionDetector::get());
+	if (getVerbLevel()) clog<<"= compute a visual index"<<endl;
+	for (stringstream strmInput(list); !strmInput.eof(); )
+	{
+		string line; getline(strmInput, line); if (line.empty()) continue; // process line-by-line
+		if (getVerbLevel()) clog<<line<<endl;
+		unsigned cnt=im.ingest(base+line, "");
+		CHECK(cnt, "ingest count should be positive");
+	}
+	if (getVerbLevel()) clog<<"= query visual index"<<endl;
+	for (stringstream strmInput(list); !strmInput.eof(); ) // query visual index
+	{
+		string line; getline(strmInput, line); if (line.empty()) continue; // process line-by-line
+		string res;
+		unsigned cnt=im.query(res, base+line);
+		CHECK(cnt, "query count should be positive");
+		if (getVerbLevel()) clog<<res;
+	}
+
+if (getVerbLevel()) clog<<"=== Index Manipulation:"<<endl;
+	im.save("ImageMatcherFaceRegions.txt");
+	im.clear();
+	CHECK(!im.count(), "record count should be 0");
+	unsigned cnt=im.load("ImageMatcherFaceRegions.txt");
+	CHECK(cnt>0, "load count should be positive");
+	string res; cnt=im.list(res);
+	if (getVerbLevel()>1) clog<<"list"<<res;
+	CHECK(!res.empty(), "list resutls should not be empty");
+	CHECK(cnt>0, "list count should be positive");
+	cnt=im.remove("3099739__86846_thumb.jpg");
+	CHECK(cnt, "remove count should be 3");
+}
+\endcode
+
+It can be easily traced by executing
+\code
+$ bin/FaceMatcher -test -v=1
+\endcode
+where -v=N sets the verbosity level of the logged output: more diagnostic messages are displayed as the verbosity level increases.
+*/

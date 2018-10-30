@@ -1,0 +1,1 @@
+ImageMatcher -fm -ndx:out FM.CaltechFaces.txt -p \\lhcdevfiler\facematch-project\Data\Caltech\Faces\full\ -lst ..\Lists\CalTech\all.GT.FL.lst -m:i %* >FM.CaltechFaces.ingest.out 2>FM.CaltechFaces.ingest.log

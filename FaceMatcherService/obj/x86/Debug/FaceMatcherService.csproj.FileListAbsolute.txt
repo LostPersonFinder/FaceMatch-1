@@ -1,0 +1,10 @@
+C:\FaceMatchSL\FaceMatch\bin\FaceMatcherService.exe.config
+C:\FaceMatchSL\FaceMatcherService\obj\x86\Debug\Interop.FaceMatcherCoreLib.dll
+C:\FaceMatchSL\FaceMatcherService\obj\x86\Debug\FaceMatcherService.csproj.ResolveComReference.cache
+C:\FaceMatchSL\FaceMatch\bin\FaceMatcherService.exe
+C:\FaceMatchSL\FaceMatch\bin\FaceMatcherService.pdb
+C:\FaceMatchSL\FaceMatcherService\obj\x86\Debug\FaceMatcherService.ProjectInstaller.resources
+C:\FaceMatchSL\FaceMatcherService\obj\x86\Debug\FaceMatcherService.Service1.resources
+C:\FaceMatchSL\FaceMatcherService\obj\x86\Debug\FaceMatcherService.csproj.GenerateResource.Cache
+C:\FaceMatchSL\FaceMatcherService\obj\x86\Debug\FaceMatcherService.exe
+C:\FaceMatchSL\FaceMatcherService\obj\x86\Debug\FaceMatcherService.pdb

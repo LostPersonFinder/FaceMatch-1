@@ -1,0 +1,80 @@
+// FaceMatcherCore.idl : IDL source for FaceMatcherCore
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FaceMatcherCore.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(DDDB75E1-C09B-47B3-B14F-98D6E342B218),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ICoreMatcherFaceRegionsMany : IDispatch{
+	[id(1), helpstring("Instantiate the face region matcher database for event")] HRESULT initialize([in] BSTR regKey, [in] int eventID, [in,out] BSTR* overflowListing, [in] int BUCKET_SIZE, [in,out] BSTR* errorString, [in,out] LONG* time, [in] int useGPU, [in] int performanceValue);
+	[id(2), helpstring("Ingest the given image ID1\t{f|p}[x,y;w,h] into the descriptor index")] HRESULT ingest([in] BSTR regKey, [in] int eventID, [in] BSTR Img, [in] BSTR IDRegs, [in] BSTR bucket, [in] int currentOverflowLevel, [in,out] BSTR* newOverflowValue, [in] int BUCKET_SIZE, [in,out] BSTR* errorString, [in,out] LONG* time, [in] BSTR debugInfo, [in] int useGPU, [in] int performanceValue);
+	[id(3), helpstring("Query the image index {f|p}[x,y;w,h], output results in the similarity order")] HRESULT query([in] BSTR regKey, [in] int eventID, [in,out] BSTR* result, [in] BSTR imgFNRegs, [in] BSTR bucket, [in] int overflowBucket, [in] FLOAT tolerance, [in,out] BSTR* errorString, [in,out] LONG* time, [in] BSTR debugInfo, [out,retval] ULONG* matches);
+	[id(4), helpstring("Save the face region matcher database for event")] HRESULT save([in] BSTR regKey, [in] int eventID, [in,out] BSTR* errorString, [in,out] LONG* time);
+	[id(5), helpstring("Remove ID from event database")] HRESULT remove([in] BSTR regKey, [in] int eventID, [in] BSTR ID, [in,out] ULONG* removed, [in,out] BSTR* errorString, [in,out] LONG* time);
+	[id(6), helpstring("Release the event database")] HRESULT releaseEventDatabase([in] BSTR regKey, [in] int eventID, [in,out] BSTR* errorString, [in,out] LONG* time);
+	[id(7), helpstring("Write the application message log to disk")] HRESULT flushLog(void);
+};
+[
+	object,
+	uuid(49318CB1-9DA9-43FA-B4AC-0C09BFB389F8),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ICoreImageMatcherWhole : IDispatch{
+	[id(1), helpstring("Instantiate the whole-image matcher database for event")] HRESULT initialize([in] BSTR regKey, [in] int eventID, [in,out] BSTR* overflowListing, [in] int BUCKET_SIZE, [in,out] BSTR* errorString, [in,out] LONG* time, [in] int useGPU, [in] int performanceValue);
+	[id(2), helpstring("Ingest the given image ID1\t{f|p}[x,y;w,h] into the descriptor index")] HRESULT ingest([in] BSTR regKey, [in] int eventID, [in] BSTR Img, [in] BSTR IDRegs, [in,out] BSTR* errorString, [in,out] LONG* time, [in] BSTR debugInfo, [in] int useGPU, [in] int performanceValue);
+	[id(3), helpstring("Query the image index {f|p}[x,y;w,h], output results in the similarity order")] HRESULT query([in] BSTR regKey, [in] int eventID, [in,out] BSTR* result, [in] BSTR imgFNRegs, [in] FLOAT tolerance, [in,out] BSTR* errorString,  [in,out] LONG* time, [in] BSTR debugInfo, [out,retval] ULONG* matches);
+	[id(4), helpstring("Save the whole-image matcher database for event")] HRESULT save([in] BSTR regKey, [in] int eventID, [in,out] BSTR* errorString, [in,out] LONG* time);
+	[id(5), helpstring("Remove ID for event database")] HRESULT remove([in] BSTR regKey, [in] int eventID, [in] BSTR ID, [in,out] BSTR* errorString, [in,out] LONG* time);
+};
+[
+	object,
+	uuid(B77687D2-8150-4613-821A-0A9EE29B4D3C),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IFaceFinder : IDispatch{
+	[id(1), helpstring("Finds the face regions in the image")] HRESULT GetFaces([in] BSTR path, [in] int options, [in,out] BSTR* faces, [in,out] BSTR* errorString, [in,out] LONG* time, [in] int useGPU, [in] int performanceOption);
+	[id(2), helpstring("GPU available check")] HRESULT usingGPU([in,out] BSTR* gpuStatus);
+};
+[
+	uuid(8D053CE6-E679-44EF-A6F2-B05C6DB4BB87),
+	version(1.0),
+]
+library FaceMatcherCoreLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(7E06FF04-0A05-4F39-984C-96586EAA660B)		
+	]
+	coclass CoreMatcherFaceRegionsMany
+	{
+		[default] interface ICoreMatcherFaceRegionsMany;
+	};
+	[
+		uuid(5306C26A-EB56-4935-AF97-97F0EFE73BC5)		
+	]
+	coclass CoreImageMatcherWhole
+	{
+		[default] interface ICoreImageMatcherWhole;
+	};
+	[
+		uuid(A68516F9-3A80-4D0A-9DE6-4E7D3C70FE53)		
+	]
+	coclass FaceFinder
+	{
+		[default] interface IFaceFinder;
+	};
+};
+

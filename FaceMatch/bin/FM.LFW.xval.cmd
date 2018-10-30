@@ -1,0 +1,1 @@
+for %%k in (F S) do echo "ImageMatcher -fm:DIST -ndx:in FM.LFW%%k5.txt -xval -t -1 -g -v=1 >LFW%%k5.out 2>LFW%%k5.log"

@@ -1,0 +1,7 @@
+- options for face/profile only detection/filtering
+- detected region orientation attribute
+- more intuitive face feature input, e.g. by expected location
+- suggested image rotation
+- incremental re-training
+- handle partial occlusions, e.g. glasses, hats, scarfs, etc.
+

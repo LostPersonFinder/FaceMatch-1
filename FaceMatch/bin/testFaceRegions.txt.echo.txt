@@ -1,0 +1,5 @@
+HAAR	testFaceRegions.txt.echo.HAAR.ndx	0.1
+LBPH	testFaceRegions.txt.echo.LBPH.ndx	0.3
+ORB	testFaceRegions.txt.echo.ORB.ndx	0.6
+SURF	testFaceRegions.txt.echo.SURF.ndx	0.9
+SIFT	testFaceRegions.txt.echo.SIFT.ndx	1
